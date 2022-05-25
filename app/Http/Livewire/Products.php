@@ -2,18 +2,20 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
 
 class Products extends Component
 {
 
-    public $modal = false, $id_product, $description, $amount;
+    public $modal = false, $id_product, $description, $amount, $category_id;
 
     public function render()
     {
-        return view('livewire.products', [
-            'products' => Product::all(),
+        return view('livewire.products.products', [
+            'products' => Product::with('category:id,name')->get(),
+            'categories' => Category::select('id', 'name')->get(),
         ]);
     }
 
@@ -28,6 +30,7 @@ class Products extends Component
         Product::updateOrCreate(['id' => $this->id_product], [
             'description' => $this->description,
             'amount' => $this->amount,
+            'category_id' => $this->category_id,
         ]);
         session()->flash('message', $this->id_product ? 'Registro Actualizado' : 'Registro Agregado');
         $this->cerrarModal();
@@ -40,6 +43,7 @@ class Products extends Component
         $this->id_product = $producto->id;
         $this->description = $producto->description;
         $this->amount = $producto->amount;
+        $this->category_id = $producto->category_id;
         $this->abrirModal();
     }
 
@@ -64,5 +68,6 @@ class Products extends Component
         $this->id_product = "";
         $this->description = "";
         $this->amount = "";
+        $this->category_id = "";
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Categories;
 use App\Http\Livewire\Products;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/productos', Products::class)->name('productos');
+    Route::get('/categorias', Categories::class)->name('categorias');
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');

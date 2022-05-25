@@ -11,19 +11,16 @@
             role="dialog" aria-modal="true" aria-labelledby="modal-headline">
             <form>
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <div class="mb-4">
-                        <label for="descripcion" class="block text-gray-700 text-sm font-bold mb-2">Descripción:</label>
-                        <input type="text"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="descripcion" wire:model="description">
-                    </div>
 
-                    <div class="mb-4">
-                        <label for="cantidad" class="block text-gray-700 text-sm font-bold mb-2">Cantidad:</label>
-                        <input type="number"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="cantidad" wire:model="amount">
-                    </div>
+                    <x-inputs.input name="description" text="Descripción" />
+
+                    <x-inputs.select name="category_id" text="Categoria">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </x-inputs.select>
+
+                    <x-inputs.input name="amount" text="Cantidad" />
 
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                         <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
@@ -40,7 +37,5 @@
                 </div>
             </form>
         </div>
-
-
     </div>
 </div>
