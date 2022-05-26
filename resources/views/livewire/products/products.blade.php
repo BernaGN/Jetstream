@@ -8,7 +8,7 @@
             @if (session()->has('message'))
                 <x-messeges.messege />
             @endif
-            <x-buttons.button text="Nuevo" class="my-3" />
+            <x-buttons.button text="Nuevo" class="font-bold my-3" />
             @if ($modal)
                 @include('livewire.products.form')
             @endif
