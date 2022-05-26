@@ -1,5 +1,5 @@
 <x-slot name="header">
-    <h1 class="text-gray-900">Crud con laravel y livewire</h1>
+    <h1 class="text-gray-900">Productos</h1>
 </x-slot>
 
 <div class="py-12">
@@ -12,7 +12,7 @@
             @if ($modal)
                 @include('livewire.products.form')
             @endif
-            <x-tables.table :headers="['ID', 'Descripcion', 'Categoria', 'Categoria', 'Acciones']">
+            <x-tables.table :headers="['ID', 'Descripcion', 'Categoria', 'Cantidad', 'Acciones']">
                 @foreach ($products as $product)
                     <tr>
                         <x-tables.td :text="$product->id" />
@@ -20,8 +20,10 @@
                         <x-tables.td :text="$product->category->name" />
                         <x-tables.td :text="$product->amount" />
                         <x-tables.td>
-                            <x-buttons.button text="Editar" route="edit({{ $product->id }})" color="blue" />
-                            <x-buttons.button text="Borrar" route="destroy({{ $product->id }})" color="red" />
+                            <x-buttons.button text="Editar" route="edit({{ $product->id }})" bgColor="blue-500"
+                                hover="blue-600" />
+                            <x-buttons.button text="Borrar" route="destroy({{ $product->id }})" bgColor="red-500"
+                                hover="red-600" />
                         </x-tables.td>
                     </tr>
                 @endforeach

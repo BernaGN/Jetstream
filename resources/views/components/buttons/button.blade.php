@@ -1,4 +1,6 @@
-<button wire:click="{{ $route }}" type="{{ $type }}"
-    {{ $attributes->merge(['class' => "bg-$color-500 hover:bg-$color-600 text-white py-2 px-4  $class "]) }}>
+<button
+    @if ($route == 'store()') wire:click.prevent="{{ $route }}" @else wire:click="{{ $route }}" @endif
+    type="{{ $type }}"
+    {{ $attributes->merge(['class' => "bg-$bgColor hover:$hoverElement-$hover text-$textColor py-2 px-4 rounded-md"]) }}>
     {{ $text }}
 </button>

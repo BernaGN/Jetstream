@@ -10,24 +10,16 @@
         <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
             role="dialog" aria-modal="true" aria-labelledby="modal-headline">
             <form>
+
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-
-                    <x-inputs.input name="description" text="Descripción" />
-
-                    <x-inputs.select name="category_id" text="Categoria">
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </x-inputs.select>
-
-                    <x-inputs.input name="amount" text="Cantidad" />
+                    <x-inputs.input name="name" text="Nombre" />
 
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                         <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
                             <x-buttons.button route="store()" text="Guardar" bgColor="purple-600" hover="purple-800"
                                 class="
                                     inline-flex justify-center w-full border border-transparent text-base leading-6
-                                    font-medium text-white shadow-sm focus:outline-none focus:border-green-700
+                                    font-medium shadow-sm focus:outline-none focus:border-green-700
                                     focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5" />
                         </span>
 
@@ -40,7 +32,6 @@
                                     focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5" />
                         </span>
                     </div>
-
                 </div>
             </form>
         </div>

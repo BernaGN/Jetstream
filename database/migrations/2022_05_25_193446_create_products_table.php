@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('amount');
             $table->foreignId('category_id')->constrained();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

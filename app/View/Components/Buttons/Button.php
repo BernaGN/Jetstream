@@ -7,20 +7,22 @@ use Illuminate\View\Component;
 class Button extends Component
 {
 
-    public $text, $color, $route, $class, $type;
+    public $text, $bgColor, $hover, $hoverElement, $route, $type, $textColor;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($text, $color = 'green', $route = 'create', $class = '', $type = 'button')
+    public function __construct($text, $bgColor = 'green-500', $hoverElement = "bg", $hover = "green-600", $route = 'create()', $type = 'button', $textColor = 'white')
     {
         $this->text = $text;
-        $this->color = $color;
+        $this->bgColor = $bgColor;
+        $this->hover = $hover;
+        $this->hoverElement = $hoverElement;
         $this->route = $route;
-        $this->class = $class;
         $this->type = $type;
+        $this->textColor = $textColor;
     }
 
     /**
